@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'co.antony'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'org.projectlombok:lombok:1.18.36' // Add Lombok as a dependency
+    annotationProcessor 'org.projectlombok:lombok:1.18.36' // Enable annotation processing
+
+    testImplementation 'org.projectlombok:lombok:1.18.36' // For tests
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+    implementation group: 'org.nocrala.tools.texttablefmt', name: 'text-table-formatter', version: '1.2.4'
+}
+
+test {
+    useJUnitPlatform()
+}
