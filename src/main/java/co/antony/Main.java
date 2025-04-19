@@ -15,23 +15,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
-        // Set up dependencies
         Scanner scanner = new Scanner(System.in);
 
-        // Model layer
         ProductRepository repository = new ProductRepository();
         ProductService service = new ProductService(repository);
 
-        // View layer
         InputReader inputReader = new InputReader(scanner);
         StockDisplayManager displayManager = new StockDisplayManager();
         MenuView menuView = new MenuView(inputReader);
         ProductView productView = new ProductView(inputReader, displayManager, menuView);
 
-        // Controller layer
         StockController controller = new StockController(service, menuView, productView, displayManager);
 
-        // Start application
         try {
             controller.runApplication();
         } finally {
